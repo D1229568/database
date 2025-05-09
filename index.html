@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-En Luggage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .announcement-bar {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 9px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .announcement-text {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 9px;
+            cursor: pointer;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px 100px;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 48px;
+            color: #000000;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #000000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #efefef;
+            border-radius: 24px;
+            padding: 12px 16px;
+            width: 689px;
+        }
+
+        .search-input {
+            border: none;
+            background: transparent;
+            margin-left: 12px;
+            width: 100%;
+            font-size: 16px;
+            color: #00000066;
+            outline: none;
+        }
+
+        .cart-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .hero {
+            display: flex;
+            background-color: #f2f0f1;
+            height: 663px;
+        }
+
+        .hero-content {
+            padding: 103px 100px;
+            width: 50%;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 64px;
+            color: #000000;
+            margin-bottom: 32px;
+        }
+
+        .hero-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #00000099;
+            margin-bottom: 24px;
+            max-width: 545px;
+        }
+
+        .shop-now-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 26px;
+            padding: 14px 64px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 34px;
+        }
+
+        .stats {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        .stat {
+            margin-right: 40px;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 60px;
+            color: #000000;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #00000099;
+        }
+
+        .divider {
+            width: 1px;
+            height: 80px;
+            background-color: #00000019;
+            margin: 0 40px;
+        }
+
+        .hero-image {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brands {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 100px;
+            background-color: #000000;
+            margin-bottom : 30px;
+        }
+
+        .brand-logo {
+            height: 50px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 72px;
+            text-align: center;
+            color: #000000;
+            margin: 0 0 40px;
+        }
+
+        .product-grid {
+            display: flex;
+            gap: 30px;
+            padding: 0 100px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: #f0eeed;
+            border-radius: 20px;
+            width: 295px;
+            height: 298px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-brand {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .star {
+            color: #ffc533;
+            margin-right: 5px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: #000000;
+            margin-left: 4px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .current-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            margin-right: 10px;
+        }
+
+        .original-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00000066;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .discount-badge {
+            background-color: #ff333319;
+            color: #ff3333;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 15px;
+        }
+
+        .view-all-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 218px;
+            height: 52px;
+            border: 1px solid #00000019;
+            border-radius: 26px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+            margin: 0 auto 40px;
+            margin-top :50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .divider-line {
+            height: 1px;
+            background-color: #00000019;
+            margin: 0 100px 60px;
+        }
+
+        .categories {
+            background-color: #efefef;
+            border-radius: 40px;
+            padding: 63px 100px;
+            margin: 60px 100px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 684px 407px;
+            grid-template-rows: repeat(2, 289px);
+            gap: 24px;
+            justify-content: center;
+            /*margin: 0 auto;*/
+        }
+
+        .category-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 22px 36px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card.large {
+            grid-column: 2;
+            grid-row: 1 / span 2; /* supaya dia tinggi dua baris */
+        }
+
+        .category-card.small:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .category-card.small:nth-child(2) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .category-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 54px;
+            color: #000000;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .category-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .testimonials {
+            padding: 60px 100px;
+            position: relative;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: hidden;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            border: 1px solid #00000019;
+            border-radius: 20px;
+            padding: 28px 32px;
+            width: 400px;
+            min-width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .author-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+            margin-right: 10px;
+        }
+
+        .verified-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #00000099;
+        }
+
+        .testimonial-nav {
+            position: absolute;
+            top: 60px;
+            right: 100px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-arrow {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            opacity: 0.7;
+        }
+
+        .footer {
+            background-color: #efefef;
+            padding: 30px 100px 30px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 33px;
+            font-weight: 700;
+            line-height: 51px;
+            color: #000000;
+            margin-bottom: 16px;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #00000099;
+            max-width: 248px;
+            margin-bottom: 35px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 0.7;
+        }
+
+        .footer-column {
+            margin-right: 60px;
+        }
+
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 19px;
+        }
+
+        .footer-link {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19px;
+            color: #00000099;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #000000;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: #00000019;
+            margin: 40px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            color: #00000099;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 12px;
+        }
+
+        .payment-method {
+            background-color: #ffffff;
+            border-radius: 5px;
+            width: 46px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 4px rgba(183, 183, 183, 0.08);
+        }
+    </style>
+</head>
+<body>
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+    <p class="announcement-text">Sign up and get 20% off to your first order. <span style="text-decoration: underline; cursor: pointer;">Sign Up Now</span></p>
+    <img src="images/X.png" alt="Close" class="close-btn">
+</div>
+
+<!-- Header -->
+<header class="header">
+    <div class="logo">All-En</div>
+    <nav class="nav">
+        <a href="#" class="nav-item">Shop <img src="images/shop-dropdown.png" alt="Dropdown"></a>
+        <a href="#" class="nav-item">On Sale</a>
+        <a href="#" class="nav-item">New Arrivals</a>
+    </nav>
+    <div class="search-bar">
+        <img src="images/search.png" alt="Search">
+        <input type="text" placeholder="Search for products..." class="search-input">
+    </div>
+    <div class="cart-icons">
+        <img src="images/Cart.png" alt="Wishlist" style="cursor: pointer;">
+        <img src="images/signin.png" alt="Cart" style="cursor: pointer;">
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">FIND LUGGAGE THAT MATCHES YOUR STYLE</h1>
+        <p class="hero-text">Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
+        <button class="shop-now-btn">Shop Now</button>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-text">Local Brands</div>
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+                <div class="stat-number">50+</div>
+                <div class="stat-text">High-Quality Products</div>
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+                <div class="stat-number">3+</div>
+                <div class="stat-text">Sad Customers</div>
+            </div>
+        </div>
+    </div>
+    <img src="images/Banner.png" alt="Stylish Luggage" class="hero-image">
+</section>
+
+<!-- Brands Section -->
+<section class="brands">
+    <img src="images/Legend%20walker.png" alt="Brand Logo" class="brand-logo">
+    <img src="images/gucci-logo-1%201.png" alt="Brand Logo" class="brand-logo">
+    <img src="images/Haugas.png" alt="Brand Logo" class="brand-logo">
+</section>
+
+<!-- New Arrivals Section -->
+<section>
+    <h2 class="section-title">NEW ARRIVALS</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+    </div>
+    <div style="padding: 0 100px;">
+        <div class="product-rating">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <span class="rating-text">4.5/5</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">$0</span>
+        </div>
+
+        <div class="product-rating" style="margin-left: 315px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">☆</div>
+            <span class="rating-text">3.5/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 315px;">
+            <span class="current-price">$10</span>
+            <span class="original-price">$0</span>
+            <div class="discount-badge">-100%</div>
+        </div>
+
+        <div class="product-rating" style="margin-left: 630px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">☆</div>
+            <span class="rating-text">4.5/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 630px;">
+            <span class="current-price">$0</span>
+        </div>
+
+        <div class="product-rating" style="margin-left: 945px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">☆</div>
+            <span class="rating-text">4.5/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 945px;">
+            <span class="current-price">$0</span>
+            <span class="original-price">$0</span>
+            <div class="discount-badge">-100%</div>
+        </div>
+    </div>
+    <button class="view-all-btn">View All</button>
+    <div class="divider-line"></div>
+</section>
+
+<!-- Top Selling Section -->
+<section>
+    <h2 class="section-title">TOP SELLING</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+        <div class="product-card">
+            <div class="product-brand">X</div>
+            <img src="#" alt="Product" class="product-image">
+        </div>
+    </div>
+    <div style="padding: 0 100px;">
+        <div class="product-rating">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <span class="rating-text">5.0/5</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">$10</span>
+            <span class="original-price">$0</span>
+            <div class="discount-badge">-100%</div>
+        </div>
+
+        <div class="product-rating" style="margin-left: 315px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <span class="rating-text">4.0/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 315px;">
+            <span class="current-price">$0</span>
+        </div>
+
+        <div class="product-rating" style="margin-left: 630px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <span class="rating-text">3.0/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 630px;">
+            <span class="current-price">$0</span>
+        </div>
+
+        <div class="product-rating" style="margin-left: 945px; margin-top: -55px;">
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">★</div>
+            <div class="star">☆</div>
+            <span class="rating-text">4.5/5</span>
+        </div>
+        <div class="product-price" style="margin-left: 945px;">
+            <span class="current-price">$0</span>
+        </div>
+    </div>
+    <button class="view-all-btn">View All</button>
+</section>
+
+<!-- Browse by Category Section -->
+<section class="categories">
+    <h2 class="section-title">BROWSE BY CATEGORY</h2>
+    <div class="category-grid">
+        <div class="category-card small">
+            <h3 class="category-title">Luggage <br>Accessories</h3>
+            <img src="images/bbc-la.png" alt="Luggage Accessories" class="category-image">
+        </div>
+        <div class="category-card small">
+            <h3 class="category-title">Travel<br>Accessories</h3>
+            <img src="images/bbc-ta.png" alt="Travel Accessories" class="category-image">
+        </div>
+        <div class="category-card large">
+            <h3 class="category-title">Luggage</h3>
+            <img src="images/bbc-luggage.png" alt="Luggage" class="category-image">
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <h2 class="section-title" style="text-align: left; margin-left: 100px;">OUR SAD CUSTOMERS</h2>
+    <div class="testimonial-nav">
+        <img src="images/prev-arrow.png" alt="Previous" class="nav-arrow prev-testimonial">
+        <img src="images/next-arrow.png" alt="Next" class="nav-arrow next-testimonial">
+    </div>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            <div class="testimonial-author">
+                <div class="author-name">Wowo</div>
+                <img src="images/checklist.png" alt="Verified" class="verified-icon">
+            </div>
+            <p class="testimonial-text">"Apa yang dicari orang sigma? Bintang skibidi, bintang paling skibidi tertinggi itu!!!"</p>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            <div class="testimonial-author">
+                <div class="author-name">Joko We Dodo</div>
+                <img src="images/checklist.png" alt="Verified" class="verified-icon">
+            </div>
+            <p class="testimonial-text">"Ya nda tau kok nanya saya???"</p>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            <div class="testimonial-author">
+                <div class="author-name">Hari Chan</div>
+                <img src="images/checklist.png" alt="Verified" class="verified-icon">
+            </div>
+            <p class="testimonial-text">"Linggang Guli Guli Wacha Linggang Gu Linggang Gu~~~"</p>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            <div class="testimonial-author">
+                <div class="author-name">Mooen</div>
+                <img src="images/checklist.png" alt="Verified" class="verified-icon">
+            </div>
+            <p class="testimonial-text">"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-top">
+        <div>
+            <div class="footer-logo">All-En</div>
+            <p class="footer-description">We have luggage that suits your style and which you're proud to use. From small to huge.</p>
+            <div class="social-icons">
+                <img src="images/twitter.png" alt="Facebook" class="social-icon">
+                <img src="images/facebook.png" alt="Twitter" class="social-icon">
+                <img src="images/instagram.png" alt="Instagram" class="social-icon">
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Company</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Features</a>
+                <a href="#" class="footer-link">Works</a>
+                <a href="#" class="footer-link">Career</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Help</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Customer Support</a>
+                <a href="#" class="footer-link">Delivery Details</a>
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">FAQ</h4><img src="../../Downloads/G Pay.png" height="13" width="29"/>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Account</a>
+                <a href="#" class="footer-link">Manage Deliveries</a>
+                <a href="#" class="footer-link">Orders</a>
+                <a href="#" class="footer-link">Payments</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Resources</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Free eBooks</a>
+                <a href="#" class="footer-link">Development Tutorial</a>
+                <a href="#" class="footer-link">How to - Blog</a>
+                <a href="#" class="footer-link">Youtube Playlist</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+        <p class="copyright">Shop.co © 2000-2023, All Rights Reserved</p>
+        <div class="payment-methods">
+            <div class="payment-method">
+                <img src="images/Visa.png" alt="Visa">
+            </div>
+            <div class="payment-method">
+                <img src="images/Mastercard.png" alt="Mastercard">
+            </div>
+            <div class="payment-method">
+                <img src="images/Paypal.png" alt="PayPal">
+            </div>
+            <div class="payment-method">
+                <img src="images/A-Pay.png" alt="Apple Pay">
+            </div>
+            <div class="payment-method">
+                <img src="images/G%20Pay.png" alt="Google Pay">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Close announcement bar
+    document.querySelector('.close-btn').addEventListener('click', function() {
+        document.querySelector('.announcement-bar').style.display = 'none';
+    });
+
+    // Shop Now button
+    document.querySelector('.shop-now-btn').addEventListener('click', function() {
+        alert('Taking you to our shop collection!');
+    });
+
+    // Product hover effect
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        card.addEventListener('click', function() {
+            alert('Product details coming soon!');
+        });
+    });
+
+    // View All buttons
+    const viewAllButtons = document.querySelectorAll('.view-all-btn');
+    viewAllButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            alert('Loading more products...');
+        });
+    });
+
+    // Category cards
+    const categoryCards = document.querySelectorAll('.category-card');
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const categoryName = card.querySelector('.category-title').textContent.trim();
+            alert(`Browsing ${categoryName} category`);
+        });
+    });
+
+    // Testimonial carousel
+    const testimonialGrid = document.querySelector('.testimonial-grid');
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    const prevButton = document.querySelector('.prev-testimonial');
+    const nextButton = document.querySelector('.next-testimonial');
+    let currentIndex = 0;
+
+    prevButton.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateTestimonialPosition();
+        }
+    });
+
+    nextButton.addEventListener('click', function() {
+        if (currentIndex < testimonials.length - 3) {
+            currentIndex++;
+            updateTestimonialPosition();
+        }
+    });
+
+    function updateTestimonialPosition() {
+        const cardWidth = testimonials[0].offsetWidth + 20; // Width + gap
+        testimonialGrid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        testimonialGrid.style.transition = 'transform 0.5s ease';
+    }
+
+    // Navigation dropdown simulation
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        if (item.querySelector('img')) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Dropdown menu coming soon!');
+            });
+        }
+    });
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            alert(`Searching for: ${this.value}`);
+            this.value = '';
+        }
+    });
+
+    // Cart and wishlist icons
+    const cartIcons = document.querySelectorAll('.cart-icons img');
+    cartIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const iconType = this.alt;
+            alert(`Opening ${iconType}`);
+        });
+    });
+</script>
+</body>
+</html>
