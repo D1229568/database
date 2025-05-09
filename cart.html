@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-En - Your Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 100px 10px;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 48px;
+            color: #000000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #000000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #efefef;
+            border-radius: 24px;
+            padding: 12px 16px;
+            width: 689px;
+        }
+
+        .search-input {
+            border: none;
+            background: transparent;
+            margin-left: 12px;
+            width: 100%;
+            font-size: 16px;
+            color: #00000066;
+            outline: none;
+        }
+
+        .cart-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #00000019;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            padding: 20px 100px;
+        }
+
+        .breadcrumb a {
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            margin-left: 10px;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 10px;
+        }
+
+        .main-content {
+            padding: 0 100px 60px;
+        }
+
+        .page-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 60px;
+            margin-bottom: 30px;
+        }
+
+        .cart-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .cart-items {
+            flex: 1;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 20px 24px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .cart-item:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item-image {
+            width: 124px;
+            height: 124px;
+            background-color: #f0eeed;
+            border-radius: 8px;
+            margin-right: 16px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            margin-bottom: 2px;
+        }
+
+        .item-size, .item-color {
+            font-size: 14px;
+            line-height: 21px;
+            margin-bottom: 4px;
+        }
+
+        .item-price {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 36px;
+            margin-top: 4px;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            background-color: #efefef;
+            border-radius: 22px;
+            padding: 12px 20px;
+            width: 125px;
+            justify-content: space-between;
+            margin-left: auto;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .quantity-value {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+        }
+
+        .remove-item {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .order-summary {
+            width: 458px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 20px 24px;
+        }
+
+        .summary-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 36px;
+            margin-bottom: 24px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .summary-label {
+            font-size: 20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .summary-value {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            text-align: right;
+        }
+
+        .discount-value {
+            color: #ff3333;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .total-row .summary-label {
+            color: #000000;
+        }
+
+        .total-row .summary-value {
+            font-size: 24px;
+        }
+
+        .promo-code {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .promo-input {
+            flex: 1;
+            background-color: #efefef;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+
+        .promo-input input {
+            border: none;
+            background: transparent;
+            margin-left: 12px;
+            width: 100%;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .promo-input input:focus {
+            outline: none;
+        }
+
+        .apply-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 36px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            padding: 18px 0;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 22px;
+            cursor: pointer;
+        }
+
+        .checkout-btn img {
+            margin-left: 12px;
+        }
+
+        .footer {
+            background-color: #efefef;
+            padding: 30px 100px 30px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 33px;
+            font-weight: 700;
+            line-height: 51px;
+            color: #000000;
+            margin-bottom: 16px;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #00000099;
+            max-width: 248px;
+            margin-bottom: 35px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 0.7;
+        }
+
+        .footer-column {
+            margin-right: 60px;
+        }
+
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 19px;
+        }
+
+        .footer-link {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19px;
+            color: #00000099;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #000000;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: #00000019;
+            margin: 40px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            color: #00000099;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 12px;
+        }
+
+        .payment-method {
+            background-color: #ffffff;
+            border-radius: 5px;
+            width: 46px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 4px rgba(183, 183, 183, 0.08);
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="logo">All-En</div>
+    <nav class="nav">
+        <a href="#" class="nav-item">Shop <img src="images/shop-dropdown.png" alt="Dropdown"></a>
+        <a href="#" class="nav-item">On Sale</a>
+        <a href="#" class="nav-item">New Arrivals</a>
+    </nav>
+    <div class="search-bar">
+        <img src="images/search.png" alt="Search">
+        <input type="text" placeholder="Search for products..." class="search-input">
+    </div>
+    <div class="cart-icons">
+        <img src="images/Cart.png" alt="Wishlist" style="cursor: pointer;">
+        <img src="images/signin.png" alt="Cart" style="cursor: pointer;">
+    </div>
+</header>
+
+<div class="divider"></div>
+
+<div class="breadcrumb">
+    <a href="homepage.html">Home</a>
+    <img src="images/arrowtologin.png" alt="Arrow" class="breadcrumb-separator">
+    <span>Cart</span>
+</div>
+
+<main class="main-content">
+    <h1 class="page-title">Your cart</h1>
+
+    <div class="cart-container">
+        <div class="cart-items">
+            <div class="cart-item">
+                <div class="item-image"></div>
+                <div class="item-details">
+                    <h3 class="item-name">X</h3>
+                    <p class="item-size">Size: Large</p>
+                    <p class="item-color">Color: White</p>
+                    <p class="item-price">$145</p>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn decrease"><img src="cart/decrease.png" alt="Decrease"></button>
+                    <span class="quantity-value">1</span>
+                    <button class="quantity-btn increase"><img src="cart/increase.png" alt="Increase"></button>
+                </div>
+                <img src="cart/remove.png" alt="Remove" class="remove-item">
+            </div>
+
+            <div class="cart-item">
+                <div class="item-image"></div>
+                <div class="item-details">
+                    <h3 class="item-name">X</h3>
+                    <p class="item-size">Size: Medium</p>
+                    <p class="item-color">Color: Red</p>
+                    <p class="item-price">$180</p>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn decrease"><img src="cart/decrease.png" alt="Decrease"></button>
+                    <span class="quantity-value">1</span>
+                    <button class="quantity-btn increase"><img src="cart/increase.png" alt="Increase"></button>
+                </div>
+                <img src="cart/remove.png" alt="Remove" class="remove-item">
+            </div>
+
+            <div class="cart-item">
+                <div class="item-image"></div>
+                <div class="item-details">
+                    <h3 class="item-name">X</h3>
+                    <p class="item-size">Size: Large</p>
+                    <p class="item-color">Color: Blue</p>
+                    <p class="item-price">$240</p>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn decrease"><img src="cart/decrease.png" alt="Decrease"></button>
+                    <span class="quantity-value">1</span>
+                    <button class="quantity-btn increase"><img src="cart/increase.png" alt="Increase"></button>
+                </div>
+                <img src="cart/remove.png" alt="Remove" class="remove-item">
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <h2 class="summary-title">Order Summary</h2>
+
+            <div class="summary-row">
+                <span class="summary-label">Subtotal</span>
+                <span class="summary-value">$565</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Discount (-20%)</span>
+                <span class="summary-value discount-value">-$113</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Delivery Fee</span>
+                <span class="summary-value">$15</span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-row total-row">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">$467</span>
+            </div>
+
+            <div class="promo-code">
+                <div class="promo-input">
+                    <img src="cart/promo.png" alt="Promo">
+                    <input type="text" placeholder="Add promo code">
+                </div>
+                <button class="apply-btn">Apply</button>
+            </div>
+
+            <button class="checkout-btn">
+                Go to Checkout
+                <img src="cart/go-to-co.png" alt="Arrow">
+            </button>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div>
+            <div class="footer-logo">All-En</div>
+            <p class="footer-description">We have luggage that suits your style and which you're proud to use. From small to huge.</p>
+            <div class="social-icons">
+                <img src="images/twitter.png" alt="Facebook" class="social-icon">
+                <img src="images/facebook.png" alt="Twitter" class="social-icon">
+                <img src="images/instagram.png" alt="Instagram" class="social-icon">
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Company</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Features</a>
+                <a href="#" class="footer-link">Works</a>
+                <a href="#" class="footer-link">Career</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Help</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Customer Support</a>
+                <a href="#" class="footer-link">Delivery Details</a>
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">FAQ</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Account</a>
+                <a href="#" class="footer-link">Manage Deliveries</a>
+                <a href="#" class="footer-link">Orders</a>
+                <a href="#" class="footer-link">Payments</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-heading">Resources</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Free eBooks</a>
+                <a href="#" class="footer-link">Development Tutorial</a>
+                <a href="#" class="footer-link">How to - Blog</a>
+                <a href="#" class="footer-link">Youtube Playlist</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+        <p class="copyright">Shop.co © 2000-2023, All Rights Reserved</p>
+        <div class="payment-methods">
+            <div class="payment-method">
+                <img src="images/Visa.png" alt="Visa">
+            </div>
+            <div class="payment-method">
+                <img src="images/Mastercard.png" alt="Mastercard">
+            </div>
+            <div class="payment-method">
+                <img src="images/Paypal.png" alt="PayPal">
+            </div>
+            <div class="payment-method">
+                <img src="images/A-Pay.png" alt="Apple Pay">
+            </div>
+            <div class="payment-method">
+                <img src="images/G%20Pay.png" alt="Google Pay">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    //when i click the logo, it goes to home page
+    document.querySelector('.logo').addEventListener('click', function() {
+        window.location.href = 'homepage.html';
+    });
+    // Banner close functionality
+    document.querySelector('.close-btn').addEventListener('click', function() {
+        document.querySelector('.announcement-bar').style.display = 'none';
+    });
+
+    // Quantity adjustment
+    const decreaseButtons = document.querySelectorAll('.decrease');
+    const increaseButtons = document.querySelectorAll('.increase');
+    const quantityValues = document.querySelectorAll('.quantity-value');
+    const removeButtons = document.querySelectorAll('.remove-item');
+    const cartItems = document.querySelectorAll('.cart-item');
+
+    // Initial prices
+    const itemPrices = [145, 180, 240];
+    let quantities = [1, 1, 1];
+
+    // Update order summary
+    function updateOrderSummary() {
+        let subtotal = 0;
+        for (let i = 0; i < itemPrices.length; i++) {
+            subtotal += itemPrices[i] * quantities[i];
+        }
+
+        const discount = Math.round(subtotal * 0.2);
+        const deliveryFee = 15;
+        const total = subtotal - discount + deliveryFee;
+
+        document.querySelector('.summary-row:nth-child(2) .summary-value').textContent = '$' + subtotal;
+        document.querySelector('.summary-row:nth-child(3) .summary-value').textContent = '-$' + discount;
+        document.querySelector('.total-row .summary-value').textContent = '$' + total;
+    }
+
+    // Add event listeners to decrease buttons
+    decreaseButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            if (quantities[index] > 1) {
+                quantities[index]--;
+                quantityValues[index].textContent = quantities[index];
+                updateOrderSummary();
+            }
+        });
+    });
+
+    // Add event listeners to increase buttons
+    increaseButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            quantities[index]++;
+            quantityValues[index].textContent = quantities[index];
+            updateOrderSummary();
+        });
+    });
+
+    // Add event listeners to remove buttons
+    removeButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            cartItems[index].style.display = 'none';
+            quantities[index] = 0;
+            updateOrderSummary();
+
+            // Check if all items are removed
+            const allRemoved = quantities.every(q => q === 0);
+            if (allRemoved) {
+                document.querySelector('.cart-items').innerHTML = '<p style="text-align: center; padding: 50px;">Your cart is empty</p>';
+            }
+        });
+    });
+
+    // Promo code functionality
+    const applyButton = document.querySelector('.apply-btn');
+    const promoInput = document.querySelector('.promo-input input');
+
+    applyButton.addEventListener('click', function() {
+        if (promoInput.value.trim() !== '') {
+            alert('Promo code applied successfully!');
+            promoInput.value = '';
+        } else {
+            alert('Please enter a valid promo code');
+        }
+    });
+
+    // Checkout button functionality
+    document.querySelector('.checkout-btn').addEventListener('click', function() {
+        alert('Proceeding to checkout...');
+    });
+
+    // Sign up link functionality
+    document.getElementById('signUpLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Opening sign up form...');
+    });
+</script>
+</body>
+</html>
