@@ -45,3 +45,16 @@ socialIcons.forEach(icon => {
         this.style.transform = 'scale(1)';
     });
 });
+
+const cartIcon = document.querySelector('.cart-icons');
+const cartContent = document.getElementById('cartContent');
+
+// Saat mouse masuk ke icon, tampilkan cart
+cartIcon.addEventListener('mouseenter', () => {
+    cartContent.classList.add('active');
+});
+
+// Saat mouse keluar dari kotak cart, sembunyikan
+cartContent.addEventListener('mouseleave', () => {
+    cartContent.classList.remove('active');
+});

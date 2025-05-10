@@ -14,10 +14,22 @@
 </div>
 
 <!-- Header -->
-<header class="header">
+<header class="header" id="mainHeader">
     <div class="logo">All-En</div>
     <nav class="nav">
-        <a href="#" class="nav-item">Shop <img src="images/shop-dropdown.png" alt="Dropdown"></a>
+
+        <div class="dropdown">
+            <a href="#" class="nav-item">Shop <img src="images/shop-dropdown.png" alt="Dropdown"></a>
+            <div class="dropdown-menu">
+                <a href="men.html">Luggage</a>
+
+                <a href="women.html">Luggage Accessories</a>
+
+                <a href="accessories.html">Travel Acessories</a>
+            </div>
+        </div>
+
+<!--        <a href="#" class="nav-item">Shop <img src="images/shop-dropdown.png" alt="Dropdown"></a>-->
         <a href="#" class="nav-item">On Sale</a>
         <a href="#" class="nav-item">New Arrivals</a>
     </nav>
@@ -27,9 +39,23 @@
     </div>
     <div class="cart-icons">
         <img src="images/Cart.png" alt="Wishlist" class = "cart-icon" style="cursor: pointer;">
-        <img src="images/signin.png" alt="Cart" style="cursor: pointer;">
     </div>
 </header>
+
+<div class="cart-content" id="cartContent">
+    <div class="cart-inner">
+        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Your Bag is empty.</h2>
+        <p><a href="signin.html" style="color: blue; text-decoration: underline;">Sign in</a> to see if you have any saved items</p>
+        <div style="margin-top: 30px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">My Profile</h3>
+            <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                <li><a href="cart.html" style="color: black; text-decoration: none">🧾 Orders</a></li>
+                <li><a href="#" style="color: black; text-decoration: none">👤 Account</a></li>
+                <li><a href="signin.html" style="color: black; text-decoration: none">🔐 Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">

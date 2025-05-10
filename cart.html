@@ -22,8 +22,44 @@
         .header {
             display: flex;
             align-items: center;
-            padding: 15px 100px 10px;
+            padding: 15px 100px;
             justify-content: space-between;
+
+            overflow: hidden;
+            max-height: 80px; /* tinggi default */
+
+            background-color: rgba(255, 255, 255, 0.6); /* semi-transparent */
+            backdrop-filter: none;
+            transition: all 0.6s ease; /* smooth semua perubahan */
+            z-index: 10;
+        }
+
+        .header.expand {
+            max-height: 240px; /* tinggi saat cart diklik */
+            padding-bottom: 250px; /* Tambahan ruang ke bawah */
+            padding-top: 45px;
+            backdrop-filter: blur(10px); /* ⬅️ efek blur aktif */
+            background-color: rgba(255, 255, 255, 0.8); /* lebih terang */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .cart-content {
+            width: 100%;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            background: #ffffff;
+            padding: 0 100px;
+            position: relative;
+            z-index: 9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        .cart-content.active {
+            max-height: 300px; /* atur sesuai tinggi konten */
+            opacity: 1;
+            padding: 30px 100px;
         }
 
         .logo {
@@ -428,6 +464,53 @@
             box-shadow: 0px 0px 4px rgba(183, 183, 183, 0.08);
         }
 
+        @media (max-width: 1200px) {
+            .header, .breadcrumb, .main-content, .footer {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            .search-bar {
+                width: 500px;
+            }
+
+            .footer-top {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .search-bar {
+                width: 300px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header, .breadcrumb, .main-content, .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .search-bar {
+                width: 200px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -446,9 +529,23 @@
     </div>
     <div class="cart-icons">
         <img src="images/Cart.png" alt="Wishlist" style="cursor: pointer;">
-        <img src="images/signin.png" alt="Cart" style="cursor: pointer;">
     </div>
 </header>
+
+<div class="cart-content" id="cartContent">
+    <div class="cart-inner">
+        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Your Bag is empty.</h2>
+        <p><a href="signin.html" style="color: blue; text-decoration: underline;">Sign in</a> to see if you have any saved items</p>
+        <div style="margin-top: 30px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">My Profile</h3>
+            <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                <li><a href="cart.html" style="color: black; text-decoration: none">🧾 Orders</a></li>
+                <li><a href="#" style="color: black; text-decoration: none">👤 Account</a></li>
+                <li><a href="signin.html" style="color: black; text-decoration: none">🔐 Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="divider"></div>
 
@@ -629,10 +726,6 @@
     document.querySelector('.logo').addEventListener('click', function() {
         window.location.href = 'homepage.html';
     });
-    // Banner close functionality
-    document.querySelector('.close-btn').addEventListener('click', function() {
-        document.querySelector('.announcement-bar').style.display = 'none';
-    });
 
     // Quantity adjustment
     const decreaseButtons = document.querySelectorAll('.decrease');
@@ -711,14 +804,29 @@
 
     // Checkout button functionality
     document.querySelector('.checkout-btn').addEventListener('click', function() {
-        alert('Proceeding to checkout...');
+        //go to checkout page
+        window.location.href = 'checkout.html';
     });
 
-    // Sign up link functionality
-    document.getElementById('signUpLink').addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Opening sign up form...');
+    const cartIcon = document.querySelector('.cart-icons');
+    const cartContent = document.getElementById('cartContent');
+
+    // Saat mouse masuk ke icon, tampilkan cart
+    cartIcon.addEventListener('mouseenter', () => {
+        cartContent.classList.add('active');
     });
+
+    // Saat mouse keluar dari kotak cart, sembunyikan
+    cartContent.addEventListener('mouseleave', () => {
+        cartContent.classList.remove('active');
+    });
+
+
+    // // Sign up link functionality
+    // document.getElementById('signUpLink').addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     alert('Opening sign up form...');
+    // });
 </script>
 </body>
 </html>
